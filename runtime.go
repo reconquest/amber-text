@@ -3,8 +3,8 @@ package amber
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"reflect"
+	"text/template"
 )
 
 var FuncMap = template.FuncMap{
@@ -19,8 +19,8 @@ var FuncMap = template.FuncMap{
 	"__amber_gtr":   runtime_gtr,
 	"__amber_lss":   runtime_lss,
 
-	"json":      runtime_json,
-	"unescaped": runtime_unescaped,
+	"json": runtime_json,
+	//"unescaped": runtime_unescaped,
 }
 
 func runtime_add(x, y interface{}) interface{} {
@@ -282,6 +282,6 @@ func runtime_json(x interface{}) (res string, err error) {
 	return
 }
 
-func runtime_unescaped(x string) interface{} {
-	return template.HTML(x)
-}
+//func runtime_unescaped(x string) interface{} {
+//    return template.HTML(x)
+//}

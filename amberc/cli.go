@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	amber "github.com/eknkc/amber"
+	amber "github.com/reconquest/amber-text"
 )
 
 var prettyPrint bool

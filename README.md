@@ -1,11 +1,11 @@
-# amber [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/eknkc/amber) [![Build Status](https://travis-ci.org/eknkc/amber.svg?branch=master)](https://travis-ci.org/eknkc/amber)
+# amber [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/reconquest/amber-text) [![Build Status](https://travis-ci.org/reconquest/amber-text.svg?branch=master)](https://travis-ci.org/reconquest/amber-text)
 
 ## Notice
 > While Amber is perfectly fine and stable to use, I've been working on a direct Pug.js port for Go. It is somewhat hacky at the moment but take a look at [Pug.go](https://github.com/eknkc/pug) if you are looking for a [Pug.js](https://github.com/pugjs/pug) compatible Go template engine.
 
 ### Usage
 ```go
-import "github.com/eknkc/amber"
+import "github.com/reconquest/amber-text"
 ```
 
 Amber is an elegant templating engine for Go Programming Language
@@ -308,7 +308,7 @@ var DefaultDirOptions = DirOptions{".amber", true}
 func Compile(input string, options Options) (*template.Template, error)
 ```
 Parses and compiles the supplied amber template string. Returns corresponding Go
-Template (html/templates) instance. Necessary runtime functions will be injected
+Template (text/templates) instance. Necessary runtime functions will be injected
 and the template will be ready to be executed.
 
 #### func  CompileFile
@@ -317,14 +317,14 @@ and the template will be ready to be executed.
 func CompileFile(filename string, options Options) (*template.Template, error)
 ```
 Parses and compiles the contents of supplied filename. Returns corresponding Go
-Template (html/templates) instance. Necessary runtime functions will be injected
+Template (text/templates) instance. Necessary runtime functions will be injected
 and the template will be ready to be executed.
 
 #### func  CompileDir
 ```go
 func CompileDir(dirname string, dopt DirOptions, opt Options) (map[string]*template.Template, error)
 ```
-Parses and compiles the contents of a supplied directory name. Returns a mapping of template name (extension stripped) to corresponding Go Template (html/template) instance. Necessary runtime functions will be injected and the template will be ready to be executed.
+Parses and compiles the contents of a supplied directory name. Returns a mapping of template name (extension stripped) to corresponding Go Template (text/template) instance. Necessary runtime functions will be injected and the template will be ready to be executed.
 
 If there are templates in subdirectories, its key in the map will be it's path relative to `dirname`. For example:
 ```
@@ -360,7 +360,7 @@ to native Go template.
     	// Compile input file to Go template
     	tpl, err := compiler.Compile()
     	if err == nil {
-    		// Check built in html/template documentation for further details
+    		// Check built in text/template documentation for further details
     		tpl.Execute(os.Stdout, somedata)
     	}
     }
@@ -377,7 +377,7 @@ Create and initialize a new Compiler
 ```go
 func (c *Compiler) Compile() (*template.Template, error)
 ```
-Compile amber and create a Go Template (html/templates) instance. Necessary
+Compile amber and create a Go Template (text/templates) instance. Necessary
 runtime functions will be injected and the template will be ready to be
 executed.
 

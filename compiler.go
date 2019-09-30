@@ -8,7 +8,7 @@ import (
 	"go/ast"
 	gp "go/parser"
 	gt "go/token"
-	"html/template"
+	"text/template"
 	"io"
 	"net/http"
 	"os"
@@ -19,7 +19,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/eknkc/amber/parser"
+	"github.com/reconquest/amber-text/parser"
 )
 
 var builtinFunctions = [...]string{
@@ -49,7 +49,7 @@ const (
 //		// Compile input file to Go template
 //		tpl, err := compiler.Compile()
 //		if err == nil {
-//			// Check built in html/template documentation for further details
+//			// Check built in text/template documentation for further details
 //			tpl.Execute(os.Stdout, somedata)
 //		}
 //	}
@@ -108,7 +108,7 @@ var DefaultOptions = Options{true, false, nil}
 // DefaultDirOptions sets expected file extension to ".amber" and recursive search for templates within a directory to true.
 var DefaultDirOptions = DirOptions{".amber", true}
 
-// Compile parses and compiles the supplied amber template string. Returns corresponding Go Template (html/templates) instance.
+// Compile parses and compiles the supplied amber template string. Returns corresponding Go Template (text/templates) instance.
 // Necessary runtime functions will be injected and the template will be ready to be executed.
 func Compile(input string, options Options) (*template.Template, error) {
 	comp := New()
@@ -123,7 +123,7 @@ func Compile(input string, options Options) (*template.Template, error) {
 }
 
 // Compile parses and compiles the supplied amber template []byte.
-// Returns corresponding Go Template (html/templates) instance.
+// Returns corresponding Go Template (text/templates) instance.
 // Necessary runtime functions will be injected and the template will be ready to be executed.
 func CompileData(input []byte, filename string, options Options) (*template.Template, error) {
 	comp := New()
@@ -146,7 +146,7 @@ func MustCompile(input string, options Options) *template.Template {
 	return t
 }
 
-// CompileFile parses and compiles the contents of supplied filename. Returns corresponding Go Template (html/templates) instance.
+// CompileFile parses and compiles the contents of supplied filename. Returns corresponding Go Template (text/templates) instance.
 // Necessary runtime functions will be injected and the template will be ready to be executed.
 func CompileFile(filename string, options Options) (*template.Template, error) {
 	comp := New()
@@ -297,7 +297,7 @@ func (c *Compiler) ParseFile(filename string) (err error) {
 	return
 }
 
-// Compile amber and create a Go Template (html/templates) instance.
+// Compile amber and create a Go Template (text/templates) instance.
 // Necessary runtime functions will be injected and the template will be ready to be executed.
 func (c *Compiler) Compile() (*template.Template, error) {
 	return c.CompileWithName(filepath.Base(c.filename))
